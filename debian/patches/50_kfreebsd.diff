@@ -1,0 +1,44 @@
+Support for GNU/kFreeBSD, by Aurelien Jarno.
+---
+ configure    |    3 ++-
+ configure.in |    3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+--- a/configure.in
++++ b/configure.in
+@@ -35,6 +35,7 @@
+ dnl
+ AC_CHECK_HEADERS(sys/ioccom.h sys/sockio.h limits.h paths.h)
+ AC_CHECK_HEADERS(net/pfvar.h, , , [#include <sys/types.h>
++#include <net/if_pflog.h>
+ #include <sys/socket.h>
+ #include <net/if.h>])
+ if test "$ac_cv_header_net_pfvar_h" = yes; then
+@@ -230,7 +231,7 @@
+ 	#
+ 	V_PCAP=bpf
+ 	AC_DEFINE(HAVE_CLONING_BPF,1,[define if you have a cloning BPF device])
+-elif test -r /dev/bpf0 ; then
++elif test -r /dev/bpf0 || test -r /usr/include/net/bpf.h ; then
+ 	V_PCAP=bpf
+ elif test -r /usr/include/net/pfilt.h ; then
+ 	V_PCAP=pf
+--- a/configure
++++ b/configure
+@@ -4791,6 +4791,7 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <sys/types.h>
++#include <net/if_pflog.h>
+ #include <sys/socket.h>
+ #include <net/if.h>
+ 
+@@ -6272,7 +6273,7 @@
+ #define HAVE_CLONING_BPF 1
+ _ACEOF
+ 
+-elif test -r /dev/bpf0 ; then
++elif test -r /dev/bpf0 || test -r /usr/include/net/bpf.h ; then
+ 	V_PCAP=bpf
+ elif test -r /usr/include/net/pfilt.h ; then
+ 	V_PCAP=pf
