@@ -57,12 +57,12 @@ binary-arch: build install
 	dh_movefiles -plibpcap$(major) --sourcedir=debian/libpcap0.8-dev \
 		usr/lib/libpcap.so.$(major)        \
 		usr/lib/libpcap.so.$(version)
-	dh_installdocs -a -A debian/README.Debian
-	dh_installexamples -a
-	dh_installmenu -a
-	dh_installman -a -plibpcap0.8-dev
-	dh_installinfo -a
-	dh_installchangelogs -a CHANGES
+#	dh_installdocs -a -A debian/README.Debian
+#	dh_installexamples -a
+#	dh_installmenu -a
+#	dh_installman -a -plibpcap0.8-dev
+#	dh_installinfo -a
+#	dh_installchangelogs -a CHANGES
 	dh_link -a -plibpcap0.8-dev
 	dh_strip -a --dbg-package=libpcap0.8-dbg
 	dh_compress -a

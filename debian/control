@@ -1,8 +1,9 @@
 Source: libpcap
-Section: devel
+Section: core
 Priority: optional
-Maintainer: Romain Francoise <rfrancoise@debian.org>
+Maintainer: Yauhen Kharuzhy <jekhor@gmail.com>
 Build-Depends: debhelper (>= 5), flex, bison, quilt (>= 0.40), perl, autotools-dev
+XCS-Cross-Host-Build-Depends: debhelper (>= 5), flex, bison, quilt (>= 0.40), perl, autotools-dev
 Standards-Version: 3.8.0
 Homepage: http://www.tcpdump.org/
 Vcs-Browser: http://git.debian.org/?p=users/rfrancoise/libpcap.git
@@ -34,7 +35,7 @@ Description: development library and header files for libpcap0.8
  capture modules in each application.
 
 Package: libpcap0.8
-Section: libs
+Section: core
 Architecture: any
 Depends: ${shlibs:Depends}
 Description: system interface for user-level packet capture
@@ -49,7 +50,7 @@ Description: system interface for user-level packet capture
  capture modules in each application.
 
 Package: libpcap0.8-dbg
-Section: libs
+Section: libdevel
 Priority: extra
 Architecture: any
 Depends: libpcap0.8 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
